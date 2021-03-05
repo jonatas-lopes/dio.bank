@@ -22,15 +22,16 @@ namespace dio.bank
                     break;
 
                     case "2" :
-                   // Depositar();
+
+                    Depositar();
                     break;
 
                     case "3" :
-                  //  Sacar();
+                    Sacar();
                     break;
 
                     case "4" :
-                  //  Transferir();
+                    Transferir();
                     break;
 
                     case "5" :
@@ -52,16 +53,53 @@ namespace dio.bank
             }
         }
 
+        private static void Transferir()
+        {
+            Console.Write("Digite o numero da conta partida : ");
+            int indicecontapartida = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o numero da conta destino : ");
+            int indicecontadestino = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser transferido: ");
+			double valorTransferencia = double.Parse(Console.ReadLine());
+
+            listContas[indicecontapartida].Transferir(listContas[indicecontapartida],listContas[indicecontadestino],valorTransferencia);
+        }
+
+        private static void Sacar()
+        {
+            Console.Write("Digite o numero da conta: ");
+            int indiceconta = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor de saque: ");
+            double valorSaque = double.Parse(Console.ReadLine());
+
+            listContas[indiceconta].Sacar(valorSaque);
+        }
+
+        private static void Depositar()
+        {
+            Console.Write("Digite o numero da conta: ");
+            int indiceconta = int.Parse(Console.ReadLine());
+
+            
+            Console.Write("Digite o valor a ser depositado : ");
+            double valorDeposito = double.Parse(Console.ReadLine());
+
+            listContas[indiceconta].Depositar(valorDeposito);
+        }
+
         private static void InserirConta()
         {
             Console.WriteLine("Cadastro de nova conta ");
 
-             Console.Write("Tipo de conta 1 - Pessoas Fisica / 2 - Pessoa Juridica : ");
-             int entradatipoconta = int.Parse(Console.ReadLine());
+            Console.Write("Tipo de conta 1 - Pessoas Fisica / 2 - Pessoa Juridica : ");
+            int entradatipoconta = int.Parse(Console.ReadLine());
 
-            Console.Write("Numero da conta : ");
-            int numeroconta = int.Parse(Console.ReadLine());
-
+            Console.Write("Nome do Titular : ");
+            string nomeconta = Console.ReadLine();
+          
             Console.Write("Saldo inicial da conta : ");
             double saldoconta = double.Parse(Console.ReadLine());
 
@@ -69,7 +107,7 @@ namespace dio.bank
             double creditoconta = double.Parse(Console.ReadLine());
 
             Conta novaconta = new Conta(tipoconta : (TipoConta)entradatipoconta,
-            numero : numeroconta,
+            nome  : nomeconta,
             saldo  : saldoconta,
             credito : creditoconta 
             );  

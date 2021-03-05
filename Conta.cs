@@ -5,14 +5,13 @@ namespace dio.bank
         public TipoConta TipoConta {get; set;}
 
         public string nome {get; set;}
-        public int numero { get; set; }
         public double saldo { get;  set; }
         public double credito {get;  set;}
 
-        public Conta( TipoConta tipoconta, int numero, double saldo, double credito)
+        public Conta( TipoConta tipoconta, string nome,  double saldo, double credito)
         {  
             this.TipoConta = tipoconta;
-            this.numero = numero; 
+            this.nome = nome;
             this.saldo = saldo;
             this.credito = credito;
                      
